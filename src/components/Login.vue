@@ -36,7 +36,7 @@
 			goLogin(){
 				let _this = this;
 				
-				if(_this.username ==''){
+				if(_this.username == ''){
 					alert('请输入用户名');
 				}else if(_this.password == ''){
 					alert('请输入密码');
@@ -69,7 +69,6 @@
 						console.log(err);
 					});
 				}
-				
 			}
 		}
 	}

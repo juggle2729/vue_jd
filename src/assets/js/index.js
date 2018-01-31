@@ -137,7 +137,7 @@ function scrollPic() {
                 indexx++;
             } else {
                 indexx--;
-            }
+        }
             //改变位置
             setTransfrom(-indexx * width);
         }

@@ -7,7 +7,6 @@
 	                	{{item.category_name}}
 	                	</router-link>
 	                </li>
-	               
 	            </ul>
 	        </div>
 	</div>

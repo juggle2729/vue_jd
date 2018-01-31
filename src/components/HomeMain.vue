@@ -50,7 +50,6 @@
                                         </div>
                                     </router-link>
                                 </li>
-                        
                             </ul>
                         </div>
                     </div>
@@ -73,6 +72,7 @@
             getData(){
                 let _this = this;
                 _this.$http.get('/home').then((res)=>{
+                    console.log(res)
                     _this.homeDatas.push(res.data[0]);
                     _this.homeDatas.push(res.data[1]);
                     _this.homeDatas.push(res.data[2]);

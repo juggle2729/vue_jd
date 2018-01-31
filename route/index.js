@@ -2,10 +2,11 @@ const express = require('express');
 const mysql = require('mysql');
 const common = require('../libs/common');
 const db = mysql.createPool({
-    host: 'localhost',
-    user: 'root',
-    password: 'huangche201314',
-    database: 'myigou'
+    host: '54.169.136.207',
+    user: 'lucky',
+    password: '123456',
+    database: 'admin',
+    port:3306
 });
 module.exports = () => {
     const route = express.Router();
@@ -15,7 +16,22 @@ module.exports = () => {
     route.get('/home', (req, res) => {
         getHomeDatas(getHomeStr, res);
     });
-
+    route.get('/home',(req,res)=> {
+        getHomeDatas((getHomeStr,res))
+    })
+    function getHomeDatas(getHomeStr,res) {
+        db.query(getHomeStr,(err,data) =>{
+            if(err){
+                res.status(500).send('database err').end()
+            } else{
+                if(data.length===0) {
+                    res.status(500).send('no datas').end()
+                } else{
+                    res.send(data)
+                }
+            }
+        })
+    }
     function getHomeDatas(getHomeStr, res) {
         db.query(getHomeStr, (err, data) => {
             if (err) {
@@ -91,7 +107,6 @@ module.exports = () => {
                 });
             }
         });
-
     });
     route.get('/cart', (req, res) => {
         const cartStr = "SELECT cart_id,user.user_id,product.product_id,product_name,product_uprice,product_img_url,goods_num,product_num,shop_name FROM product,user,goods_cart,shop where product.product_id=goods_cart.product_id and user.user_id=goods_cart.user_id and shop.shop_id = product.shop_id";
@@ -177,7 +192,6 @@ module.exports = () => {
         })
     };
     route.post('/login', (req, res) => {
-
         let mObj = {};
         for (let obj in req.body) {
             mObj = JSON.parse(obj);

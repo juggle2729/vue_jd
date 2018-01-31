@@ -11,7 +11,6 @@
                     <li class="banner_item" v-for="item in goodsImages">
                         <img v-lazy="item.image_url" alt="" class="banner_pic">
                     </li>
-                
                 </ul>
                 <div class="banner_count">
                         <em id="slide-nub" class="fz18">1</em>

@@ -41,6 +41,7 @@ export default{
 				}
 			}
 		},
+
 		methods:{
 			fetchData(id){
 				var _this=this;
